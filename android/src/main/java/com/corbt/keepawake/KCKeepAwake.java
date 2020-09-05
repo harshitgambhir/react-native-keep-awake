@@ -29,7 +29,12 @@ public class KCKeepAwake extends ReactContextBaseJavaModule {
             activity.runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
-                    activity.getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+                    activity.getWindow().addFlags(
+                        WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON|
+                        WindowManager.LayoutParams.FLAG_DISMISS_KEYGUARD|
+                        WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED|
+                        WindowManager.LayoutParams.FLAG_TURN_SCREEN_ON
+                    );
                 }
             });
         }
@@ -43,7 +48,12 @@ public class KCKeepAwake extends ReactContextBaseJavaModule {
             activity.runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
-                    activity.getWindow().clearFlags(android.view.WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+                    activity.getWindow().clearFlags(
+                        android.view.WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON|
+                        android.view.WindowManager.LayoutParams.FLAG_DISMISS_KEYGUARD|
+                        android.view.WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED|
+                        android.view.WindowManager.LayoutParams.FLAG_TURN_SCREEN_ON
+                    );
                 }
             });
         }
